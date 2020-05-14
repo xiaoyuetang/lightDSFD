@@ -1,4 +1,4 @@
-from __future__ import print_function 
+from __future__ import print_function
 import sys
 import os
 import argparse
@@ -83,7 +83,7 @@ def write_to_txt(f, det , event , im_name):
         ymin = det[i][1]
         xmax = det[i][2]
         ymax = det[i][3]
-        score = det[i][4] 
+        score = det[i][4]
         f.write('{:.1f} {:.1f} {:.1f} {:.1f} {:.3f}\n'.
                 format(xmin, ymin, (xmax - xmin + 1), (ymax - ymin + 1), score))
 
@@ -107,7 +107,7 @@ def infer(net , img , transform , thresh , cuda , shrink):
             score = detections[0, i, j, 0]
             #label_name = labelmap[i-1]
             pt = (detections[0, i, j, 1:]*scale).cpu().numpy()
-            coords = (pt[0], pt[1], pt[2], pt[3]) 
+            coords = (pt[0], pt[1], pt[2], pt[3])
             det.append([pt[0], pt[1], pt[2], pt[3], score])
             j += 1
     if (len(det)) == 0:
